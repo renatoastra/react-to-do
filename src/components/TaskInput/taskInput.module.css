@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    top: 173px;
+}
+
+
+.container input {
+    background-color: var(--gray-500);
+    padding: 1rem;
+    border: 1px solid var(--gray-700);
+    border-radius: 0.5rem;
+    width: 39.8rem;
+    margin-right: 0.5rem;
+
+    color: var(--gray-100);
+}
+
+.container button {
+    padding: 1rem;
+    background-color: var(--blue-500);
+    color: var(--gray-100);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+}
+
+.buttonElements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.buttonElements svg {
+    margin-left: 0.5rem;
+    font-size: 1.1rem;
+    color: var(--gray-100);
+}
+
+.buttonElements p {
+    font-size: 1rem;
+
+}
