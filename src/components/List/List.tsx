@@ -47,7 +47,7 @@ export function List({ task, tasksAmount, deleteTask, taskToComplete, completedT
                     return (
                         <TaskItem
                             key={item.id}
-                            deleteTask={() => { deleteTask(item.description) }}
+                            deleteTask={() => { deleteTask(item.id) }}
                             description={item.description}
                             taskToComplete={() => { taskToComplete(item) }}
                         />

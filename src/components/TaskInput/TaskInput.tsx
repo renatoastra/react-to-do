@@ -14,18 +14,27 @@ export function TaskInput() {
     const [newTask, setNewTask] = useState<Tasks>({ id: "", description: "", isCompleted: false });
     const [tasks, setTasks] = useState<Tasks[]>([]);
     const taskAmount = tasks.length;
-    const [completedTasksAmount, setCompletedTasksAmount] = useState(0)
+    const [completedTasksAmount, setCompletedTasksAmount] = useState(0);
 
     function createNewTask(event: FormEvent) {
         event.preventDefault();
+
         setTasks([...tasks, newTask]);
-        setNewTask({ id: '', description: '', isCompleted: false });
+        setNewTask({ id: uuid(), description: '', isCompleted: false });
     }
 
+    useEffect(() => {
+
+        const getAllCompletedTasks = tasks.filter(item => {
+            return item.isCompleted;
+        })
+
+        setCompletedTasksAmount(getAllCompletedTasks.length);
+    }, [tasks])
+
     function deleteTask(taskToDelete: string) {
-        console.log(taskToDelete);
         const tasksUpdated = tasks.filter(item => {
-            return taskToDelete != item.description
+            return taskToDelete != item.id;
         })
         setTasks(tasksUpdated);
     }
@@ -39,22 +48,21 @@ export function TaskInput() {
 
                 item.isCompleted = !item.isCompleted;
             }
-            return item
+            return item;
         });
 
         setTasks(updateCompletedStatus);
 
         const getAllCompletedTasks = updateCompletedStatus.filter(item => {
-            return item.isCompleted == true
+            return item.isCompleted;
         })
-
-        setCompletedTasksAmount(getAllCompletedTasks.length)
+        setCompletedTasksAmount(getAllCompletedTasks.length);
     }
     return (
         <>
             <div className={styles.container}>
                 <form action="">
-                    <input placeholder='Adicione uma nova tarefa' onChange={handleGetNewTask} type="text" name="" id="" value={newTask.description} />
+                    <input placeholder='Adicione uma nova tarefa' onChange={handleGetNewTask} type="text" name="" id={newTask.id} value={newTask.description} />
                     <button onClick={createNewTask} type="submit">
                         <div className={styles.buttonElements}>
                             <p>Criar</p>
