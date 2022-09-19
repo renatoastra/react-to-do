@@ -1,5 +1,5 @@
 import { Trash } from 'phosphor-react'
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
 import styles from './taskItem.module.css'
 
 interface TaskItemProps {

@@ -16,13 +16,6 @@ export function TaskInput() {
     const taskAmount = tasks.length;
     const [completedTasksAmount, setCompletedTasksAmount] = useState(0)
 
-
-
-    useEffect(() => {
-        const getTask = localStorage.getItem("task");
-        console.log("🚀 ~ getTask", getTask);
-    }, [])
-
     function createNewTask(event: FormEvent) {
         event.preventDefault();
         setTasks([...tasks, newTask]);
